@@ -3,11 +3,11 @@
 Usage:
 
 ```golang
-import "github.com/Ortega-Dan/golang-panic-catcher/panic"
+import "github.com/Ortega-Dan/golang-panic-catcher/gopanic"
 
 
 func myFunction(){
-  defer panic.Catch()
+  defer gopanic.Catch()
   
   // ...
   // do your stuff with confidence
