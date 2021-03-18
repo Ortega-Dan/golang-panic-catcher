@@ -1,3 +1,3 @@
 module github.com/Ortega-Dan/golang-panic-catcher
 
-go 1.16
+go 1.11
