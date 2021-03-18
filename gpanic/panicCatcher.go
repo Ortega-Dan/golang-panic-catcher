@@ -1,4 +1,4 @@
-package gopanic
+package gpanic
 
 import (
 	"fmt"
