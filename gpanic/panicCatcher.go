@@ -20,9 +20,7 @@ func Catch() {
 // passed as the first argument
 func CatchAndCall(relationId string, fcallback func(relationId string, errorMsg string, stacktrace string)) {
 	if err := recover(); err != nil {
-		errorMsg := fmt.Errorf("%v", err).Error()
-		stackString := string(debug.Stack())
-
+		errorMsg, stackString := GetPanicInfo(err)
 		fcallback(relationId, errorMsg, stackString)
 	}
 }
@@ -35,4 +33,11 @@ func CatchToFile(file *os.File) {
 		fmt.Fprintln(file, err)
 		fmt.Fprintln(file, debug.Stack())
 	}
+}
+
+// Get the info from the given panic object
+func GetPanicInfo(panicErr interface{}) (errorMsg string, stackString string) {
+	errorMsg = fmt.Errorf("%v", panicErr).Error()
+	stackString = string(debug.Stack())
+	return errorMsg, stackString
 }
