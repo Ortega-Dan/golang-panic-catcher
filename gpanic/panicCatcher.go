@@ -15,9 +15,8 @@ func Catch() {
 	}
 }
 
-// Catches a panic (recovers from it) and calls a given callback function,
-// preserving a convenience relation through an arbitrary string identifier
-// passed as the first argument
+// Catches a panic (recovers from it) and calls a given callback function, preserving a convenience relation through an arbitrary string identifier passed as the first argument.
+// It can also be used to set named return values of the parent function (set the values to return), when used with an inline callback function, thanks to closures.
 func CatchAndCall(relationId string, fcallback func(relationId string, errorMsg string, stacktrace string)) {
 	if err := recover(); err != nil {
 		errorMsg, stackString := GetPanicInfo(err)
